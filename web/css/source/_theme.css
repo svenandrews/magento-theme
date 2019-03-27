@@ -1,0 +1,91 @@
+body {
+  background-color: #ffffff;
+}
+header {
+  background-color: #121f32;
+}
+header * {
+  color: #ffffff;
+  font-size: 14px;
+}
+.topbar {
+  border-bottom: 1px solid #414c5b;
+  padding: 0px 0px;
+}
+.localnos,
+.localnos i {
+  border-right: 1px solid #414c5b;
+  font-size: 12px !important;
+}
+.localnos strong {
+  font-size: 16px;
+}
+.intno a span {
+  font-size: 12px;
+}
+.intno a span strong {
+  font-size: 16px;
+}
+.header-lower-wrapper {
+  background-color: #ffffff;
+}
+.header-lower-links div {
+  background-color: #ffffff;
+  color: #121f32 !important;
+  text-align: center;
+}
+.vatswitch span {
+  position: relative;
+  width: 40px;
+  background: #fff;
+  border-radius: 20px;
+  display: inline-block;
+  height: 19px;
+  padding: 0px 5px 0px 0px;
+  margin-top: -4px;
+}
+input[type="checkbox"].incvat {
+  right: -3px;
+  position: absolute;
+  border-radius: 21px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: #121f32;
+  width: 15px;
+  height: 15px;
+  -webkit-transition: all 1.2s;
+  transition: all 1.2s;
+  border: none;
+  box-shadow: none;
+}
+input[type="checkbox"].incvat:checked {
+  left: 2px;
+}
+nav,
+.nav-sections {
+  background-color: #121f32 !important;
+}
+nav * {
+  color: #ffffff;
+}
+.level-top span {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: normal;
+}
+li.level0 {
+  width: 10%;
+  display: block;
+  float: left;
+}
+.navigation .level0 > .level-top {
+  line-height: normal !important;
+}
+.sections.nav-sections {
+  margin-bottom: 0px;
+}
+.logo {
+  margin: 0px;
+  max-width: 100%;
+}

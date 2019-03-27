@@ -1,0 +1,12 @@
+<div class="topaccount">
+    <a><i class="fas fa-user-circle"></i>&nbsp;<span>My Account</span></a>
+</div>
+<div class="vatswitch">
+    <label>
+    Inc VAT
+        <span>
+            <input type="checkbox" name="incvat" class="incvat" <?php if(isset($_COOKIE['incVat']) && $_COOKIE['incVat']==1){echo 'checked="checked"';} ?> />
+        </span>
+    Ex Vat
+    </label>
+</div>

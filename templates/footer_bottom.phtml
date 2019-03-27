@@ -1,0 +1,30 @@
+<?php 
+    // footer bottom 
+?>
+<div class="footer-bottom-content">
+    <div class="flex">
+        <a href="#">Terms &amp; Conditions</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Sitemap</a>
+    </div>
+</div>
+<div class="footer-address">
+    PASS Ltd, 1 Wilson Street, Thornaby, Stockton-on-Tees, TS17 7AR
+</div>
+<div class="footer-copyright">
+    Copyright 2018 PASS Ltd. Company number 3914998
+</div>
+
+<style>
+    <?php 
+        if(isset($_COOKIE['incVat']) && $_COOKIE['incVat']==1):
+        ?>
+        .products.list.items .item .price-wrapper.price-including-tax{display:none;}
+        <?php
+        else:
+            ?>
+        .products.list.items .item .price-wrapper.price-excluding-tax{display:none;}
+        <?php
+        endif;
+    ?>
+</style>

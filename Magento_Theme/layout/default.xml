@@ -1,0 +1,187 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>    
+        <referenceContainer name="columns" htmlTag="div" htmlClass="columns row"/>
+        <referenceContainer name="main" htmlTag="div" htmlClass="column main col"/>
+
+        <referenceContainer name="header.panel.wrapper" remove="true"  />
+        <referenceContainer name="header-wrapper" remove="true" />
+        <referenceContainer name="page.top" remove="true"/>
+        <referenceContainer name="copyright" remove="true"/>
+        <referenceContainer name="page.main.title" remove="true"/>
+        <!-- HEADER -->
+        <referenceContainer name="header.container" htmlTag="header" htmlClass="header">
+            <container name="header.topbar" htmlTag="div" htmlClass="row topbar">
+                <container name="header.topbar.container" htmlTag="div" htmlClass="container flex">
+                    <container name="header.top.bar.left" htmlTag="div" htmlClass="left col flex">
+                        <block class="Magento\Framework\View\Element\Template" name="topphones" template="Magento_Theme::html/phonenumbers.phtml" />
+                    </container>
+                    <container name="header.top.bar.right" htmlTag="div" htmlClass="right col flex">
+                        <block class="Magento\Framework\View\Element\Template" name="topaccount" template="Magento_Theme::html/topaccount.phtml" />
+                    </container>
+                </container>
+            </container>
+
+            <container name="header.logo.row" htmlTag="div" htmlClass="row logo" after="header.topbar">
+                <container name="header.logo.container" htmlTag="div" htmlClass="container flex">
+                    <container name="header.logo.wrapper" htmlTag="div" htmlClass="logo-wrapper col">
+                        <block class="Magento\Theme\Block\Html\Header\Logo" name="logo">
+                            <arguments>
+                                <argument name="logo_img_width" xsi:type="number">189</argument>
+                                <argument name="logo_img_height" xsi:type="number">64</argument>
+                            </arguments>
+                        </block>
+                    </container>
+
+                    <container name="header.logo.search" htmlClass="search-wrapper col" htmlTag="div">
+                        <block class="Magento\Framework\View\Element\Template" name="top.search" as="topSearch" template="Magento_Search::form.mini.phtml" />
+                    </container>
+
+                    <container name="header.logo.basket" htmlClass="basket-wrapper col" htmlTag="div">
+                        <block class="Magento\Checkout\Block\Cart\Sidebar" name="minicart" as="minicart" after="-" template="Magento_Checkout::cart/minicart.phtml">
+                            <arguments>
+                                <argument name="jsLayout" xsi:type="array">
+                                    <item name="types" xsi:type="array"/>
+                                    <item name="components" xsi:type="array">
+                                        <item name="minicart_content" xsi:type="array">
+                                            <item name="component" xsi:type="string">Magento_Checkout/js/view/minicart</item>
+                                            <item name="config" xsi:type="array">
+                                                <item name="template" xsi:type="string">Magento_Checkout/minicart/content</item>
+                                            </item>
+                                            <item name="children" xsi:type="array">
+                                                <item name="subtotal.container" xsi:type="array">
+                                                    <item name="component" xsi:type="string">uiComponent</item>
+                                                    <item name="config" xsi:type="array">
+                                                        <item name="displayArea" xsi:type="string">subtotalContainer</item>
+                                                    </item>
+                                                    <item name="children" xsi:type="array">
+                                                        <item name="subtotal" xsi:type="array">
+                                                            <item name="component" xsi:type="string">uiComponent</item>
+                                                            <item name="config" xsi:type="array">
+                                                                <item name="template" xsi:type="string">Magento_Checkout/minicart/subtotal</item>
+                                                            </item>
+                                                        </item>
+                                                    </item>
+                                                </item>
+                                                <item name="extra_info" xsi:type="array">
+                                                    <item name="component" xsi:type="string">uiComponent</item>
+                                                    <item name="config" xsi:type="array">
+                                                        <item name="displayArea" xsi:type="string">extraInfo</item>
+                                                    </item>
+                                                </item>
+                                                <item name="promotion" xsi:type="array">
+                                                    <item name="component" xsi:type="string">uiComponent</item>
+                                                    <item name="config" xsi:type="array">
+                                                        <item name="displayArea" xsi:type="string">promotion</item>
+                                                    </item>
+                                                </item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                </argument>
+                            </arguments>
+                            <container name="minicart.addons" label="Mini-cart promotion block"/>
+                        </block>
+                    </container>
+
+                </container>
+            </container>
+
+
+            <container name="header.menu.row" htmlTag="div" htmlClass="row mainmenu" after="header.logo.row">
+                <container name="header.menu.wrapper" htmlTag="div" htmlClass="container flex">
+                    <block class="Magento\Framework\View\Element\Template" name="navigation.sections" before="-" template="Magento_Theme::html/sections.phtml">
+                        <arguments>
+                            <argument name="group_name" xsi:type="string">navigation-sections</argument>
+                                <argument name="group_css" xsi:type="string">nav-sections</argument>
+                            </arguments>
+                        <block class="Magento\Framework\View\Element\Template" name="store.menu" group="navigation-sections" template="Magento_Theme::html/container.phtml">
+                            <arguments>
+                                <argument name="title" translate="true" xsi:type="string">Menu</argument>
+                            </arguments>
+                           
+                        </block>
+                        <block class="Magento\Framework\View\Element\Text" name="store.links" group="navigation-sections">
+                            <arguments>
+                                <argument name="title" translate="true" xsi:type="string">Account</argument>
+                                <argument name="use_force" xsi:type="boolean">true</argument>
+                                <argument name="text" xsi:type="string"><![CDATA[<!-- Account links -->]]></argument>
+                            </arguments>
+                        </block>
+                        <block class="Magento\Framework\View\Element\Template" name="store.settings" group="navigation-sections" template="Magento_Theme::html/container.phtml">
+                            <arguments>
+                                <argument name="title" translate="true" xsi:type="string">Settings</argument>
+                            </arguments>
+                        <block class="Magento\Store\Block\Switcher" name="store.settings.language" template="Magento_Store::switch/languages.phtml">
+                            <arguments>
+                                <argument name="id_modifier" xsi:type="string">nav</argument>
+                            </arguments>
+                        </block>
+                        <block class="Magento\Directory\Block\Currency" name="store.settings.currency" template="Magento_Directory::currency.phtml">
+                            <arguments>
+                                <argument name="id_modifier" xsi:type="string">nav</argument>
+                            </arguments>
+                        </block>
+                        </block>
+                    </block>
+                </container>
+            </container>
+
+            <container name="header.lower.blocks" htmlTag="div" htmlClass="row headerlower" after="header.menu.row">
+                    <container name="header.lower.links" htmlClass="container header-lower-links" htmlTag="div">
+                        <container name="header.lower.links.row" htmlClass="row" htmlTag="div">
+                            <block class="Magento\Framework\View\Element\Template" name="lower.links" template="Magento_Theme::html/lowerlinks.phtml" />
+                        </container>
+                    </container>
+            </container>
+            <container name="header.paypal.wrapper" htmlTag="div" htmlClass="row header-paypal-wrapper"  after="header.lower.blocks">
+                <block class="Magento\Framework\View\Element\Template" name="header.paypal.credit" template="paypal.phtml"/>
+            </container>
+            <container name="homepage.slider" htmlTag="div" htmlClass="container"  after="header.paypal.wrapper">
+                <block class="Nwdthemes\Revslider\Block\Revslider">
+                    <arguments>
+                        <argument name="alias" xsi:type="string">hompage-slider</argument>
+                    </arguments>
+                </block>
+            </container>
+        </referenceContainer>
+
+        <!-- HEADER -->
+
+        <!-- Main Container -->
+        <referenceContainer name="main.content" htmlClass="container"></referenceContainer>
+        <!-- Main Container -->
+<!-- footer -->
+        <referenceContainer name="footer" htmlClass="footer-wrapper">
+            <container name="footer.row.subscribe.wrapper" htmlClass="footer-sub" htmlTag="div">
+                <container htmlClass="container" name="footer.row.subscribe" htmlTag="div">
+                    <block class="Magento\Newsletter\Block\Subscribe" name="form.subscribe" template="Magento_Newsletter::subscribe.phtml" before="-"/>
+                </container>
+            </container>
+            <container name="footer.row.one" htmlClass="footer-content-one" htmlTag="div">
+                <block class="Magento\Framework\View\Element\Template" name="footer.row.one.content" template="footer_row1.phtml"/>
+            </container>
+            <container name="footer.row.two" htmlClass="footer-content-two" htmlTag="div">
+                <block class="Magento\Framework\View\Element\Template" name="footer.row.two.content" template="footer_row2.phtml"/>
+            </container>   
+            <container name="footer.row.bottom"  htmlClass="footer-content-bottom" htmlTag="div">
+                <block class="Magento\Framework\View\Element\Template" name="footer.bottom.content" template="footer_bottom.phtml"/>
+            </container>
+        </referenceContainer>
+
+<!-- footer -->
+
+        
+        <referenceBlock name="skip_to_content.target" remove="true"/>
+        <referenceBlock name="skip_to_content" remove="true"/>
+        <referenceBlock name="top.links" remove="true" />
+        <referenceBlock name="report.bugs" remove="true" />
+        <referenceBlock name="footer_links" remove="true" />
+    </body>
+</page>

@@ -1,0 +1,14 @@
+<?php 
+if(!empty($block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('tester-homepage-advert-block')->toHtml())):
+    echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('tester-homepage-advert-block')->toHtml();
+else:
+    ?>
+    <div class="row">
+        <div class="col-12" style="text-align:center;height:200px; background-color:#ebebeb; box-shadow:inset 0px 0px 15px #555555">
+            Please create block tester-homepage-advert-block
+        </div>
+    </div><br>
+
+    <?php
+endif;
+?>

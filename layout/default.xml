@@ -1,0 +1,13 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="catalog.compare.sidebar" remove="true"/>
+
+        <referenceContainer name="main.content">
+            <block class="Magento\Framework\View\Element\Template" name="footer_bottom" template="Magento_Theme::footer_bottom.phtml" before="-"/>
+            <block class="Magento\Framework\View\Element\Template" name="footer_bottom1" template="Magento_Theme::footer_row1.phtml" before="-"/>
+            <block class="Magento\Framework\View\Element\Template" name="footer_bottom2" template="Magento_Theme::footer_row2.phtml" before="-"/>
+        </referenceContainer>
+        <referenceBlock name="footer" remove="true"/>
+        
+    </body>
+</page>

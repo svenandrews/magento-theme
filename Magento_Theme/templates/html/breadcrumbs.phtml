@@ -1,0 +1,31 @@
+<?php
+/**
+ * Sven Andrews Breadcrumbs
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php if ($crumbs && is_array($crumbs)) : ?>
+<div class="breadcrumbs row">
+    <ul class="items container">
+        <?php foreach ($crumbs as $crumbName => $crumbInfo) : 
+
+            // do not display the last breadcrumb
+            if($crumbInfo['last']):
+                continue;
+            endif;
+            ?>
+            <li class="item <?= /* @escapeNotVerified */ $crumbName ?>">
+            <?php if ($crumbInfo['link']) : ?>
+                <a href="<?= /* @escapeNotVerified */ $crumbInfo['link'] ?>" title="<?= $block->escapeHtml($crumbInfo['title']) ?>"><?= $block->escapeHtml($crumbInfo['label']) ?></a>
+            <?php elseif ($crumbInfo['last']) : ?>
+                <strong><?= $block->escapeHtml($crumbInfo['label']) ?></strong>
+            <?php else: ?>
+                <?= $block->escapeHtml($crumbInfo['label']) ?>
+            <?php endif; ?>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+</div>
+<?php endif; ?>

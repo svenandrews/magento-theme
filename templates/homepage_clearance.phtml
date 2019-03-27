@@ -1,0 +1,14 @@
+<?php 
+if(!empty($block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('homepage_clearance')->toHtml())):
+    echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('homepage_clearance')->toHtml();
+else:
+    ?>
+    <div class="row">
+        <div class="col-12" style="text-align:center;height:200px; background-color:#ebebeb; box-shadow:inset 0px 0px 15px #555555">
+            Please create block homepage_clearance
+        </div>
+    </div>
+
+    <?php
+endif;
+?>

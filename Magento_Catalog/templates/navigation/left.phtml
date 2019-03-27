@@ -1,0 +1,105 @@
+<?php // FIXME: product counts need optimising!!! ?>
+
+<?php if (!$block->getCategory()) {
+    return;
+} ?>
+<div class="category-description">
+    <?php echo $block->getCategory()->getData('short_category_description');
+    ?>
+</div>
+<?php $_categories = $block->getCurrentChildCategories(); ?>
+<?php $_count = is_array($_categories) ? count($_categories) : $_categories->count(); ?>
+<?php if ($_count): ?>
+    <div class="block filter">
+        <div class="left title">
+            <?= /* @escapeNotVerified */ __('Categories') ?>
+        </div>
+        <div class="block-content filter-content content">
+
+        <dl class="filter-options options" id="narrow-by-list2">
+        <?php   
+
+        foreach($_categories as $parent):
+            if($parent->hasChildren()):
+            ?>
+            
+                <dt class="filter-options-title"><?= $block->escapeHtml($parent->getName()) ?> <i class="fa fa-chevron-down"></i></dt>
+                <dd class="filter-options-content">
+                    <ol class="items">
+                    <?php 
+                    foreach($parent->getChildrenCategories() as $child):
+                    ?>
+                            <?php if ($child->getIsActive()): ?>
+                                <li class="item">
+                                    <a href="<?= /* @escapeNotVerified */ $block->getCategoryUrl($child) ?>"<?php if ($block->isCategoryActive($child)): ?> class="current"<?php endif; ?>>
+                                        <?= $block->escapeHtml($child->getName()) ?>
+                                    
+                                    <span class="count">(<?= /* @escapeNotVerified */ $child->getProductCollection()->count() ?>)</span>
+                                    </a>
+                                </li>
+                            <?php endif; ?>
+                    <?php 
+                    endforeach;
+                    ?>
+
+                    </ol>
+
+                </dd>
+            <?php
+            else:
+                $children = '';
+                ?>
+            
+<?php
+            $children.='<li class="item"><a href="'. $block->getCategoryUrl($parent).'"';
+                if ($block->isCategoryActive($parent)): 
+                    $children.='class="current"';
+                endif;
+                $children.='>';
+                $children.= $block->escapeHtml($parent->getName());
+                $children.= '<span class="count">(';
+                $children.= $parent->getProductCollection()->count();
+                $children.=')</span></a></li>';
+                ?>
+                <dd class="filter-options-content no-children">
+                    <ol class="items">
+                    <?php 
+                        echo $children?>
+                        
+                    </ol>
+
+                </dd>
+            <?php
+            endif;
+
+        endforeach;
+        ?>
+        </dl>
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+<?php endif; ?>
+
+<script>
+    // FIXME: Move this to seperate javascript
+    require([ 'jquery'], function($){ $(document).ready(function($) {
+
+    jQuery('.filter-options-title').click(function(e){
+        jQuery(this).find('i').toggleClass('fa-chevron-down fa-chevron-up');
+        jQuery(this).next('dd').slideToggle();
+    });
+    jQuery('.filter-options-title:not(:first)').click();
+
+})})
+
+</script>

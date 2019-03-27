@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <move element="page.main.title" destination="main" as="page.main.title" before="-"/>
+        <move element="category.cms" destination="header.container" after="-" />
+        <move element="div.sidebar.additional" destination="div.sidebar.main" after="-"/>
+
+
+        <referenceContainer name="category.image" remove="true"/>
+        <referenceContainer name="header.paypal.credit" remove="true"/>
+        <referenceContainer name="homepage.slider" remove="true"/>
+        <referenceContainer name="category.description" remove="true" />
+        <!-- breadcrumbs -->
+        <referenceContainer name="header.container" htmlClass="header">
+            <block class="Magento\Theme\Block\Html\Breadcrumbs" name="breadcrumbs" after="-" as="breadcrumbs"/>
+        </referenceContainer>
+    </body>
+</page>

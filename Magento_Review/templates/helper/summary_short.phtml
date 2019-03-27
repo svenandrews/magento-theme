@@ -1,0 +1,46 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var \Magento\Review\Block\Product\ReviewRenderer $block */
+
+$url = $block->getReviewsUrl() . '#reviews';
+$urlForm = $block->getReviewsUrl() . '#review-form';
+?>
+<?php $rating = $block->getRatingSummary() ?? 0; ?>
+
+<div class="product-reviews-summary short<?= !$rating ? ' no-rating' : '' ?>">
+    <?php if ($rating>=0):?>
+    <div class="rating-summary">
+        <div class="rating-result" title="<?= $block->escapeHtmlAttr($rating) ?>%">
+            <div class="rating-blank">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <div class="yellows" style="width:<?= $rating ?>%; ">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </div>
+            </div>
+            
+
+            <span style="width:<?= $block->escapeHtmlAttr($rating) ?>%"><span>(<?php echo is_numeric($block->escapeHtml($block->getReviewsCount())) ?$block->escapeHtml($block->getReviewsCount()): 0; ?>)</span></span>
+        </div>
+    </div>
+    <?php endif;?>
+</div>
+
+<style>
+    .rating-blank{position:relative; display:inline; color:#ccc;}
+    .rating-blank .yellows {position:absolute; color:yellow; overflow:hidden; height:100%; top:-1px; left:0; white-space: nowrap;}
+    .rating-blank .yellows i{display:inline-block;}
+</style>

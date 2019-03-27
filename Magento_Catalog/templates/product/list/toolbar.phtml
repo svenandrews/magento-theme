@@ -1,0 +1,33 @@
+<?php
+/**
+ * Product list toolbar
+ *
+ * @var $block \Magento\Catalog\Block\Product\ProductList\Toolbar
+ */
+use Magento\Catalog\Model\Product\ProductList\Toolbar;
+?>
+<?php if ($block->getCollection()->getSize()): ?>
+    <div class="toolbar toolbar-products flex" data-mage-init='<?= /* @escapeNotVerified */ $block->getWidgetOptionsJson() ?>'>
+        <div class="view col">View
+            <?php if ($block->isExpanded()): ?>
+                <?php include ($block->getTemplateFile('Magento_Catalog::product/list/toolbar/viewmode.phtml')) ?>
+            <?php endif; ?>
+        </div>
+
+        <?php 
+        // Amount removed as it is moved to the title block.
+        //include ($block->getTemplateFile('Magento_Catalog::product/list/toolbar/amount.phtml')) ?>
+
+        <div class="sort col ">
+            <?php if ($block->isExpanded()): ?>
+                <?php include ($block->getTemplateFile('Magento_Catalog::product/list/toolbar/sorter.phtml')) ?>
+            <?php endif; ?>
+        </div>
+        <div class="limit col">
+
+            <?= $block->getPagerHtml() ?>
+
+            <?php include ($block->getTemplateFile('Magento_Catalog::product/list/toolbar/limiter.phtml')) ?>
+        </div>
+    </div>
+<?php endif ?>
